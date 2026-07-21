@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bozsányi Balázs — Weboldal • IT segítség • Egyedi fejlesztés</title>
+  <meta name="description" content="Számlaképes egyéni vállalkozó. Weboldalkészítés, IT segítség, hálózat, egyedi C# szoftver és gyártási nyomonkövetés magánszemélyeknek és kisvállalkozásoknak." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg0:#0b1220;
+      --bg1:#0e1730;
+      --card:#0f1b38;
+      --text:#e9eefc;
+      --muted:#a9b4d0;
+      --brand:#6ea8fe;
+      --brand2:#63e6be;
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+    body{
+      background:
+        radial-gradient(900px 450px at 10% 10%, rgba(110,168,254,.18), transparent 60%),
+        radial-gradient(800px 420px at 80% 15%, rgba(99,230,190,.14), transparent 55%),
+        radial-gradient(700px 380px at 60% 80%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 70%, #090f1f);
+      color: var(--text);
+    }
+    .navbar{
+      background: rgba(11,18,32,.55) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-link, .navbar-brand{ color: var(--text) !important; }
+    .nav-link{ opacity: .88; }
+    .nav-link:hover{ opacity: 1; }
+    .badge-soft{
+      background: rgba(110,168,254,.12);
+      color: var(--text);
+      border: 1px solid rgba(110,168,254,.25);
+    }
+    .badge-soft2{
+      background: rgba(99,230,190,.12);
+      color: var(--text);
+      border: 1px solid rgba(99,230,190,.25);
+    }
+    .hero{ padding-top: 6.25rem; padding-bottom: 3.5rem; }
+    .glass{
+      background: rgba(15,27,56,.55);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    .cardx{
+      background: rgba(15,27,56,.45);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.28);
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .cardx:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.18); }
+    .cardx.link-card{ text-decoration:none; display:block; color:var(--text); }
+    .muted{ color: var(--muted); }
+    .btn-brand{
+      background: linear-gradient(135deg, rgba(110,168,254,.95), rgba(99,230,190,.85));
+      border: 0; color: #08101f; font-weight: 700;
+      box-shadow: 0 12px 30px rgba(110,168,254,.18);
+    }
+    .btn-brand:hover{ filter: brightness(1.02); color:#08101f; }
+    .btn-ghost{
+      border: 1px solid rgba(255,255,255,.18);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+    }
+    .btn-ghost:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+    .section{ padding: 4rem 0; }
+    .section-title{ letter-spacing: -.01em; }
+    .icon-pill{
+      width: 44px; height: 44px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: rgba(110,168,254,.10);
+      border: 1px solid rgba(110,168,254,.20);
+      flex-shrink: 0;
+    }
+    .icon-pill.green{ background: rgba(99,230,190,.10); border: 1px solid rgba(99,230,190,.20); }
+    .divider{
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+      margin: 1.25rem 0;
+    }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .tiny{ font-size: .92rem; }
+    .avatar-wrap{
+      aspect-ratio: 1 / 1; border-radius: 22px; overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(220px 220px at 30% 20%, rgba(110,168,254,.22), transparent 60%),
+        radial-gradient(220px 220px at 70% 80%, rgba(99,230,190,.18), transparent 60%),
+        rgba(255,255,255,.04);
+      display: grid; place-items: center; position: relative; box-shadow: var(--shadow);
+    }
+    .avatar-wrap img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+    .promise-line{
+      border-left: 3px solid rgba(110,168,254,.6);
+      padding-left: 1rem;
+      font-style: italic;
+    }
+    section{ scroll-margin-top: 90px; }
+    p, li{ text-align: justify; }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#top">
+        <span class="me-2">Bozsányi Balázs</span>
+        <span class="badge badge-soft rounded-pill align-middle">Weboldal • IT segítség • Fejlesztés</span>
+      </a>
+
+      <button class="navbar-toggler bg-light-subtle" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#szolgaltatasok">Szolgáltatások</a></li>
+          <li class="nav-item"><a class="nav-link" href="#rolam">Rólam</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+        <div class="d-flex ms-lg-3 mt-3 mt-lg-0 gap-2">
+          <a class="btn btn-ghost btn-sm" href="mailto:info@tracelab.hu"><i class="bi bi-envelope me-1"></i>Email</a>
+          <a class="btn btn-brand btn-sm" href="tel:+36305408292">
+            <i class="bi bi-telephone me-1"></i>Hívás
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+
+
+          <h1 class="display-5 fw-bold lh-1">
+            Gyors, érthető és megbízható <span class="text-info">IT segítség</span>.
+          </h1>
+
+          <p class="mt-3 mb-3 muted fs-5">
+            Magánszemélyeknek és kisvállalkozásoknak. Legyen szó weboldal készítésről, számítógép javításról,
+            Wi-Fi problémáról vagy egy egyszerűbb egyedi programról — segítek megtalálni a legköltséghatékonyabb
+            megoldást, felesleges körök és bonyolult szakzsargon nélkül.
+          </p>
+
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <a class="btn btn-brand btn-lg" href="#kapcsolat">
+              <i class="bi bi-send me-1"></i>Kapcsolatfelvétel
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#szolgaltatasok">
+              <i class="bi bi-grid me-1"></i>Szolgáltatások
+            </a>
+          </div>
+
+          <p class="mt-4 tiny muted mb-1">
+            <i class="bi bi-geo-alt me-1"></i>Helyszíni segítség: <span class="mono">Pécs / Pécsvárad</span> környéke • Távoli segítség: országosan
+          </p>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="cardx p-3">
+            <div class="avatar-wrap mb-3">
+              <img src="pic.jpg" alt="Bozsányi Balázs" onerror="this.parentElement.innerHTML='<i class=\'bi bi-person-circle\' style=\'font-size:3rem;opacity:.6\'></i>'">
+            </div>
+            <div class="px-1 pb-1">
+              <div class="fw-semibold mb-1">+36 30 540 8292</div>
+              <a class="tiny text-decoration-none muted d-block mb-3" href="mailto:info@tracelab.hu">info@tracelab.hu</a>
+              <a class="btn btn-brand w-100" href="#kapcsolat"><i class="bi bi-send me-1"></i>Írok / Kérek ajánlatot</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MIÉRT ÉRDEMES VELEM DOLGOZNI -->
+  <section id="miert" class="section pt-0">
+    <div class="container">
+      <div class="cardx p-4">
+        <h2 class="section-title fw-bold mb-3">Miért érdemes velem dolgozni?</h2>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <div class="icon-pill"><i class="bi bi-cpu"></i></div>
+              <div>
+                <div class="fw-semibold">Mérnöki háttér</div>
+                <div class="tiny muted">Mérnökinformatikusként jelenleg is autóipari gyártási rendszerekkel dolgozom.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <div class="icon-pill green"><i class="bi bi-lightning-charge"></i></div>
+              <div>
+                <div class="fw-semibold">Valós üzemi tapasztalat</div>
+                <div class="tiny muted">Napi szinten hibakeresés, rendszerüzemeltetés és egyedi fejlesztések éles környezetben.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <div class="icon-pill"><i class="bi bi-chat-square-text"></i></div>
+              <div>
+                <div class="fw-semibold">Érthető kommunikáció</div>
+                <div class="tiny muted">Nem kell informatikusnak lenned ahhoz, hogy tudd, mi történik.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <div class="icon-pill green"><i class="bi bi-check2-square"></i></div>
+              <div>
+                <div class="fw-semibold">Kisebb munkákat is vállalok</div>
+                <div class="tiny muted">Egy routerbeállítás vagy gépgyorsítás ugyanúgy fontos lehet, mint egy új weboldal.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <div class="icon-pill"><i class="bi bi-receipt-cutoff"></i></div>
+              <div>
+                <div class="fw-semibold">Átlátható működés</div>
+                <div class="tiny muted">Előre egyeztetett árak, számla, vállalható határidő.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3">
+              <div class="icon-pill green"><i class="bi bi-server"></i></div>
+              <div>
+                <div class="fw-semibold">Rendszergazdai tapasztalat multicégnél</div>
+                <div class="tiny muted">Felhasználókezelés, hardver, hálózat, jogosultságok és napi üzemeltetés valós, termelő környezetben.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="szolgaltatasok" class="section">
+    <div class="container">
+      <div class="row align-items-end g-3 mb-4">
+        <div class="col-lg-7">
+          <h2 class="section-title fw-bold mb-2">Szolgáltatások</h2>
+        </div>
+        <div class="col-lg-5 text-lg-end">
+          <a class="btn btn-ghost" href="#kapcsolat"><i class="bi bi-clipboard-check me-1"></i>Árajánlatot kérek</a>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <!-- Web -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cardx h-100 p-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="icon-pill"><i class="bi bi-globe2"></i></div>
+              <div class="h5 fw-bold mb-0">Weboldal készítés</div>
+            </div>
+            <p class="tiny muted mb-2">Modern, mobilbarát weboldal, ami bizalmat épít és segít új ügyfeleket szerezni.</p>
+            <ul class="tiny muted mb-0">
+              <li>Bemutatkozó oldal vagy landing page</li>
+              <li>Kisebb webshop</li>
+               <li>Webszerverek üzemeltetése</li>
+              <li>Alap SEO és gyors betöltés</li>
+              <li>Igény szerinti karbantartás</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- IT -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cardx h-100 p-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="icon-pill green"><i class="bi bi-pc-display"></i></div>
+              <div class="h5 fw-bold mb-0">Számítógép segítség</div>
+            </div>
+            <p class="tiny muted mb-2">Lassú a gép? Nem indul? Új gépre költöznél?</p>
+            <ul class="tiny muted mb-0">
+              <li>Windows telepítés és optimalizálás</li>
+              <li>SSD / RAM bővítés</li>
+              <li>Adatmentés és költöztetés</li>
+              <li>Hibakeresés, diagnosztika</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Network -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cardx h-100 p-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="icon-pill"><i class="bi bi-wifi"></i></div>
+              <div class="h5 fw-bold mb-0">Hálózat &amp; Wi-Fi</div>
+            </div>
+            <p class="tiny muted mb-2">Stabil internet otthonra vagy kisebb irodába.</p>
+            <ul class="tiny muted mb-0">
+              <li>Router beállítás</li>
+              <li>Wi-Fi lefedettség javítása</li>
+              <li>Csatlakozási hibák megoldása</li>
+              <li>Kábelezés és vezeték nélküli hálózatépítés</li>
+              <li>Távoli segítség (AnyDesk / TeamViewer)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Data recovery -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cardx h-100 p-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="icon-pill green"><i class="bi bi-database-check"></i></div>
+              <div class="h5 fw-bold mb-0">Adatvisszaállítás</div>
+            </div>
+            <p class="tiny muted mb-2">Véletlenül törölt fájlok, sérült meghajtó vagy rendszerösszeomlás után sem kell mindent elveszettnek tekinteni.</p>
+            <ul class="tiny muted mb-0">
+              <li>Törölt fájlok helyreállítása</li>
+              <li>Sérült vagy felismert meghajtó kezelése</li>
+              <li>Adatmentés külső meghajtóra vagy felhőbe</li>
+              <li>Rendszer-összeomlás utáni helyreállítás</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Custom apps -->
+        <div class="col-md-6 col-lg-4">
+          <div class="cardx h-100 p-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="icon-pill green"><i class="bi bi-braces"></i></div>
+              <div class="h5 fw-bold mb-0">Egyedi szoftver (C#)</div>
+            </div>
+            <p class="tiny muted mb-2">Egyszerű nyilvántartó vagy adminisztrációs programok vállalkozásoknak.</p>
+            <ul class="tiny muted mb-0">
+              <li>Ügyfél- vagy készletnyilvántartás</li>
+              <li>Adatimport / export</li>
+              <li>Riportok, kimutatások</li>
+              <li>Prototípus készítés rövid határidővel</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Traceability / Trace Lab -->
+        <div class="col-md-6 col-lg-4">
+          <a href="https://tracelab.hu" target="_blank" rel="noopener" class="cardx link-card h-100 p-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="icon-pill"><i class="bi bi-upc-scan"></i></div>
+              <div class="h5 fw-bold mb-0">Gyártási nyomonkövetés (Traceability)</div>
+            </div>
+            <p class="tiny muted mb-2">Kis- és középvállalatoknak, akik szeretnék tudni, miből, mikor és hogyan készült egy termék.</p>
+            <ul class="tiny muted mb-0">
+              <li>Egyedi traceability / MES jellegű megoldások</li>
+              <li>Vonalkódos azonosítás</li>
+              <li>Gyártási adatok visszakereshetősége</li>
+              <li>Nagyvállalati ár nélkül</li>
+            </ul>
+            <div class="fw-semibold text-info mt-2"><i class="bi bi-box-arrow-up-right me-1"></i>Részletek: tracelab.hu</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="rolam" class="section">
+    <div class="container">
+      <div class="cardx p-4">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-8">
+            <h2 class="section-title fw-bold mb-3">Rólam</h2>
+            <p class="muted mb-2">
+              Autóipari gyártási környezetben dolgozom MES mérnökként, ahol a megbízhatóság és a gyors
+              hibamegoldás alapelvárás. Ezt a szemléletet viszem tovább a saját ügyfeleimnél is.
+            </p>
+            <p class="muted mb-2">
+              Rendszergazdaként multicéges környezetben szereztem tapasztalatot — több vállalat
+              IT-infrastruktúráját kezeltem egyidejűleg, napi szintű üzemeltetési feladatokkal.
+            </p>
+            <p class="muted mb-0">
+              Rendőrként szolgálva megtanultam, hogy a megbízhatóság és a pontosság nem opció, hanem alapkövetelmény.
+              Ezt az értékrendet máig magammal viszem. Szeretem az egyszerű, jól működő megoldásokat — nem a
+              legdrágább rendszert akarom eladni, hanem azt, ami valóban hasznos és fenntartható.
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <div class="glass p-3">
+              <div class="fw-semibold mb-2"><i class="bi bi-receipt-cutoff me-1"></i>Számlaképes</div>
+              <div class="tiny muted">Egyéni vállalkozó, átlátható elszámolás, korrekt határidő.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kapcsolat" class="section">
+    <div class="container">
+      <div class="cardx p-4">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <h2 class="section-title fw-bold mb-2">Kérj visszahívást vagy árajánlatot</h2>
+            <p class="muted mb-0">
+              Írj pár mondatot arról, mire van szükséged — weboldal, számítógép javítás, Wi-Fi beállítás,
+              egyedi program vagy gyártási nyomonkövetés — és 
+              visszajelzek, milyen megoldást javaslok és várhatóan mennyibe kerül.
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="d-flex flex-column gap-3">
+              <div class="glass p-3">
+                <div class="d-flex gap-3 align-items-start">
+                  <div class="icon-pill"><i class="bi bi-telephone"></i></div>
+                  <div>
+                    <div class="fw-semibold">Telefon</div>
+                    <a class="tiny muted text-decoration-none" href="tel:+36305408292">+36 30 540 8292</a>
+                  </div>
+                </div>
+              </div>
+              <div class="glass p-3">
+                <div class="d-flex gap-3 align-items-start">
+                  <div class="icon-pill green"><i class="bi bi-envelope"></i></div>
+                  <div>
+                    <div class="fw-semibold">E-mail</div>
+                    <a class="tiny muted text-decoration-none" href="mailto:info@tracelab.hu">info@tracelab.hu</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+          <div class="tiny muted">© <span id="year"></span> Bozsányi Balázs</div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <span class="tiny muted">Számlaképes egyéni vállalkozó</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
